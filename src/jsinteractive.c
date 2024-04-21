@@ -2686,6 +2686,8 @@ void jsiDebuggerLine(JsVar *line) {
        } else {
          jsiConsolePrint("Unknown command\n");
        }
+    } else if (!strcmp(id,"backtrace") || !strcmp(id,"bt")) {
+      jsiConsolePrint("Frame %d:\n");
     } else
       handled = false;
   }
