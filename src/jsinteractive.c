@@ -88,7 +88,7 @@ JsErrorFlags lastJsErrorFlags = 0; ///< Compare with jsErrorFlags in order to re
 // ----------------------------------------------------------------------------
 
 #ifdef USE_DEBUGGER
-void jsiDebuggerLine(JsVar *line);
+static void jsiDebuggerLine(JsVar *line);
 #endif
 void jsiCheckErrors();
 // ----------------------------------------------------------------------------
@@ -2686,6 +2686,8 @@ void jsiDebuggerLine(JsVar *line) {
        } else {
          jsiConsolePrint("Unknown command\n");
        }
+    } else if (!*id) {
+      // TODO: repeat last debugger cmd
     } else
       handled = false;
   }
