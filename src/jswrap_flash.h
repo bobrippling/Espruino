@@ -18,7 +18,7 @@
 
 // Flash Library exports
 JsVar *jswrap_flash_getPage(int addr);
-JsVar *jswrap_flash_getFree();
+JsVar *jswrap_flash_getFree(void);
 void jswrap_flash_erasePage(JsVar *addr);
 void jswrap_flash_write(JsVar *data, int addr);
 JsVar *jswrap_flash_read(int length, int addr);

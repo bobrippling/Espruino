@@ -16,9 +16,9 @@
 
 #define DGRAM_ON_BIND_NAME          JS_EVENT_PREFIX"bind"
 
-bool jswrap_net_idle();
-void jswrap_net_init();
-void jswrap_net_kill();
+bool jswrap_net_idle(void);
+void jswrap_net_init(void);
+void jswrap_net_kill(void);
 
 JsVar *jswrap_url_parse(JsVar *url, bool parseQuery);
 

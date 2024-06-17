@@ -28,24 +28,24 @@
 
 /// autoLoad = do we load the current state if it exists?
 void jsiInit(bool autoLoad);
-void jsiKill();
+void jsiKill(void);
 
 #ifndef LINUX
 // This should get called from jshardware.c one second after startup,
 // it does initialisation tasks like setting the right console device
-void jsiOneSecondAfterStartup();
+void jsiOneSecondAfterStartup(void);
 #endif
 
 /// do main loop stuff, return true if it was busy this iteration
-bool jsiLoop();
+bool jsiLoop(void);
 
 /// Tries to get rid of some memory (by clearing command history). Returns true if it got rid of something, false if it didn't.
-bool jsiFreeMoreMemory();
+bool jsiFreeMoreMemory(void);
 
-bool jsiHasTimers(); // are there timers still left to run?
+bool jsiHasTimers(void); // are there timers still left to run?
 bool jsiIsWatchingPin(Pin pin); // are there any watches for the given pin?
 
-void jsiCtrlC(); // Ctrl-C - force interrupt of execution
+void jsiCtrlC(void); // Ctrl-C - force interrupt of execution
 
 /// Queue a function, string, or array (of funcs/strings) to be executed next time around the idle loop
 void jsiQueueEvents(JsVar *object, JsVar *callback, JsVar **args, int argCount);
@@ -69,15 +69,15 @@ IOEventFlags jsiGetDeviceFromClass(JsVar *deviceClass);
 JsVar *jsiGetClassNameFromDevice(IOEventFlags device);
 
 /// If Espruino could choose right now, what would be the best console device to use?
-IOEventFlags jsiGetPreferredConsoleDevice();
+IOEventFlags jsiGetPreferredConsoleDevice(void);
 /** Change the console to a new location - if force is set, this console
  * device will be 'sticky' - it will not change when the device changes
  * connection state */
 void jsiSetConsoleDevice(IOEventFlags device, bool force);
 /// Get the device that the console is currently on
-IOEventFlags jsiGetConsoleDevice();
+IOEventFlags jsiGetConsoleDevice(void);
 /// is the console forced into a given place (See jsiSetConsoleDevice)
-bool jsiIsConsoleDeviceForced();
+bool jsiIsConsoleDeviceForced(void);
 /// Transmit a byte
 void jsiConsolePrintChar(char data);
 /// Transmit a string (may be any string)
@@ -105,7 +105,7 @@ void jsiConsolePrintString_int(const char *str);
 /// Print the contents of a string var - directly
 void jsiConsolePrintStringVar(JsVar *v);
 /// If the input line was shown in the console, remove it
-void jsiConsoleRemoveInputLine();
+void jsiConsoleRemoveInputLine(void);
 /// Change what is in the inputline into something else (and update the console)
 void jsiReplaceInputLine(JsVar *newLine);
 /** Clear the input line of data. If updateConsole is set, it
@@ -170,7 +170,7 @@ typedef enum {
 } PACKED_FLAGS JsiStatus;
 
 extern JsiStatus jsiStatus;
-bool jsiEcho();
+bool jsiEcho(void);
 
 #ifndef SAVE_ON_FLASH
 extern Pin pinBusyIndicator;
@@ -186,11 +186,11 @@ extern JsVarRef timerArray; // Linked List of timers to check and run
 extern JsVarRef watchArray; // Linked List of input watches to check and run
 
 extern JsVarInt jsiTimerAdd(JsVar *timerPtr);
-extern void jsiTimersChanged(); // Flag timers changed so we can skip out of the loop if needed
+extern void jsiTimersChanged(void); // Flag timers changed so we can skip out of the loop if needed
 // end for jswrap_interactive/io.c ------------------------------------------------
 
 #ifdef USE_DEBUGGER
-extern void jsiDebuggerLoop(); ///< Enter the debugger loop
+extern void jsiDebuggerLoop(void); ///< Enter the debugger loop
 #endif
 
 

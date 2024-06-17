@@ -60,13 +60,13 @@ typedef struct {
 extern HrmInfo hrmInfo;
 
 /// Initialise heart rate monitoring
-void hrm_init();
+void hrm_init(void);
 
 /// Add new heart rate value, return true if there was a heart beat
 bool hrm_new(int hrmValue, Vector3 *acc);
 
-void hrm_sensor_on();
-void hrm_sensor_off();
+void hrm_sensor_on(void);
+void hrm_sensor_off(void);
 
 // Append extra information to an existing HRM event object
 void hrm_get_hrm_info(JsVar *var);

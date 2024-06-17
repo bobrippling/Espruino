@@ -23,10 +23,10 @@ extern const uint16_t PALETTE_4BIT[16];
 extern const uint16_t PALETTE_8BIT[256];
 #endif
 
-bool jswrap_graphics_idle();
-void jswrap_graphics_init();
+bool jswrap_graphics_idle(void);
+void jswrap_graphics_init(void);
 
-JsVar *jswrap_graphics_getInstance();
+JsVar *jswrap_graphics_getInstance(void);
 // For creating graphics classes
 JsVar *jswrap_graphics_createArrayBuffer(int width, int height, int bpp,  JsVar *options);
 JsVar *jswrap_graphics_createCallback(int width, int height, int bpp, JsVar *callback);
@@ -91,7 +91,7 @@ void jswrap_graphics_saveScreenshot(JsVar *parent, JsVar *fileNameVar);
 JsVar *jswrap_graphics_quadraticBezier(JsVar *parent, JsVar * arr, JsVar *options);
 JsVar *jswrap_graphics_transformVertices(JsVar *parent, JsVar *verts, JsVar *transformation);
 JsVar *jswrap_graphics_floodFill(JsVar *parent, int x, int y, JsVar *col);
-JsVar *jswrap_graphics_theme();
+JsVar *jswrap_graphics_theme(void);
 JsVar *jswrap_graphics_setTheme(JsVar *parent, JsVar *theme);
 JsVar *jswrap_graphics_filter(JsVar *parent, JsVar *filter, JsVar *options);
 

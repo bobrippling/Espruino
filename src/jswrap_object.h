@@ -68,6 +68,6 @@ JsVar *jswrap_function_bind(JsVar *parent, JsVar *thisArg, JsVar *argsArray);
 bool jswrap_boolean_constructor(JsVar *value);
 
 /** A convenience function for adding event listeners */
-void jswrap_object_addEventListener(JsVar *parent, const char *eventName, void (*callback)(), JsnArgumentType argTypes);
+void jswrap_object_addEventListener(JsVar *parent, const char *eventName, void (*callback)(void), JsnArgumentType argTypes);
 
 #endif // JSWRAP_OBJECT_H_

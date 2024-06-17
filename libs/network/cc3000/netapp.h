@@ -223,7 +223,7 @@ extern long netapp_ping_send(unsigned long *ip, unsigned long ulPingAttempts, un
 //*****************************************************************************
 
 #ifndef CC3000_TINY_DRIVER
-extern long netapp_ping_stop();
+extern long netapp_ping_stop(void);
 #endif
 //*****************************************************************************
 //
@@ -248,7 +248,7 @@ extern long netapp_ping_stop();
 //!
 //*****************************************************************************
 #ifndef CC3000_TINY_DRIVER
-extern void netapp_ping_report();
+extern void netapp_ping_report(void);
 #endif
 
 
@@ -294,7 +294,7 @@ extern void netapp_ipconfig( tNetappIpconfigRetArgs * ipconfig );
 //*****************************************************************************
 
 #ifndef CC3000_TINY_DRIVER
-extern long netapp_arp_flush();
+extern long netapp_arp_flush(void);
 #endif
 
 

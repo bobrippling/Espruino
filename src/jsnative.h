@@ -41,6 +41,6 @@
 JsVar *jsnCallFunction(void *function, JsnArgumentType argumentSpecifier, JsVar *thisParam, JsVar **paramData, int paramCount) ;
 
 /** Perform sanity tests to ensure that  jsnCallFunction is working as expected */
-void jsnSanityTest();
+void jsnSanityTest(void);
 
 #endif //JSNATIVE_H

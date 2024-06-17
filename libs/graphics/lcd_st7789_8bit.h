@@ -32,14 +32,14 @@ void lcdST7789_cmd(int cmd, int dataLen, const uint8_t *data);
 void lcdST7789_setYOffset(int y);
 /// Set double buffered or normal modes
 void lcdST7789_setMode(LCDST7789Mode mode);
-LCDST7789Mode lcdST7789_getMode();
+LCDST7789Mode lcdST7789_getMode(void);
 /// When in double-buffered mode, flip the screen
 void lcdST7789_flip(JsGraphics *gfx);
 
 /// Starts a blit operation - call this, then blitPixel (a lot) then blitEnd. No bounds checking
 void lcdST7789_blitStart(int x, int y, int w, int h);
 void lcdST7789_blitPixel(unsigned int col);
-void lcdST7789_blitEnd();
+void lcdST7789_blitEnd(void);
 
 /// blit a 1 bit image direct to the screen
 void lcdST7789_blit1Bit(int x, int y, int w, int h, int scale, JsvStringIterator *pixels, const uint16_t *palette);

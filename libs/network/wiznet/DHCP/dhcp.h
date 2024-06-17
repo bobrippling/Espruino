@@ -171,7 +171,7 @@ extern int8_t check_leasedIP(uint8_t s, wiz_NetInfo *pWIZNETINFO);
 extern int8_t parseDHCPMSG(uint8_t s, uint16_t length, wiz_NetInfo *pWIZNETINFO);
 
 extern uint8_t setHostname(char *);
-extern char* getHostname();
+extern char* getHostname(void);
 char nibbleToHex(uint8_t nibble);
 
 #endif	/* _DHCP_H_ */

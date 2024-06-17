@@ -32,17 +32,17 @@
 
 
 /// jshInit is called at start-up, put hardware dependent init stuff in this function
-void jshInit();
+void jshInit(void);
 
 /// jshReset is called from JS 'reset()' - try to put peripherals back to their power-on state
-void jshReset();
+void jshReset(void);
 
 /** Code that is executed each time around the idle loop. Prod watchdog timers here,
  * and on platforms without GPIO interrupts you can check watched Pins for changes. */
-void jshIdle();
+void jshIdle(void);
 
 /// Called when Espruino is busy waiting (eg for data to send)
-void jshBusyIdle();
+void jshBusyIdle(void);
 
 /** Enter sleep mode for the given period of time. Can be woken up by interrupts.
  * If time is 0xFFFFFFFFFFFFFFFF then go to sleep without setting a timer to wake
@@ -58,7 +58,7 @@ bool jshSleep(JsSysTime timeUntilWake);
 
 /** Clean up ready to stop Espruino. Unused on embedded targets, but used on Linux,
  * where GPIO that have been exported may need unexporting, and so on. */
-void jshKill();
+void jshKill(void);
 
 /** Get this IC's serial number. Passed max # of chars and a pointer to write to.
  * Returns # of chars of non-null-terminated string.
@@ -71,7 +71,7 @@ int jshGetSerialNumber(unsigned char *data, int maxChars);
 
 /** Is the USB port connected such that we could move the console over to it
  * (and that we should store characters sent to USB). On non-USB boards this just returns false. */
-bool jshIsUSBSERIALConnected();
+bool jshIsUSBSERIALConnected(void);
 
 /** The system time is used all over Espruino - for:
  *  * setInterval/setTimeout
@@ -86,7 +86,7 @@ bool jshIsUSBSERIALConnected();
  */
 
 /// Get the system time (in ticks since the epoch)
-JsSysTime jshGetSystemTime();
+JsSysTime jshGetSystemTime(void);
 /** Set the system time (in ticks since the epoch) - this should only be called rarely as it
 could mess up things like jsinteractive's timers! */
 void jshSetSystemTime(JsSysTime time);
@@ -96,9 +96,9 @@ JsSysTime jshGetTimeFromMilliseconds(JsVarFloat ms);
 JsVarFloat jshGetMillisecondsFromTime(JsSysTime time);
 
 // software IO functions...
-void jshInterruptOff(); ///< disable interrupts to allow short delays to be accurate
-void jshInterruptOn();  ///< re-enable interrupts
-bool jshIsInInterrupt(); ///< Are we currently in an interrupt?
+void jshInterruptOff(void); ///< disable interrupts to allow short delays to be accurate
+void jshInterruptOn(void);  ///< re-enable interrupts
+bool jshIsInInterrupt(void); ///< Are we currently in an interrupt?
 void jshDelayMicroseconds(int microsec);  ///< delay a few microseconds. Should use used sparingly and for very short periods - max 1ms
 
 void jshPinSetValue(Pin pin, bool value); ///< Set a digital output to 1 or 0. DOES NOT change pin state OR CHECK PIN VALIDITY
@@ -220,13 +220,13 @@ void jshSetOutputValue(JshPinFunction func, int value);
 void jshEnableWatchDog(JsVarFloat timeout);
 
 // Kick the watchdog
-void jshKickWatchDog();
+void jshKickWatchDog(void);
 
 /* Sometimes we allow a Ctrl-C or button press (eg. Bangle.js) to cause an interruption if there
 is no response from the interpreter, and that interruption can then break out of Flash Writes
 for instance. But there are certain things (like compaction) that we REALLY don't want to
 break out of, so they can call jshKickSoftWatchDog to stop it. */
-void jshKickSoftWatchDog();
+void jshKickSoftWatchDog(void);
 
 /// Check the pin associated with this EXTI - return true if the pin's input is a logic 1
 bool jshGetWatchedPinState(IOEventFlags device);
@@ -324,7 +324,7 @@ int jshSPISend(IOEventFlags device, int data);
 void jshSPISend16(IOEventFlags device, int data);
 /** Send data in tx through the given SPI device and return the response in
  * rx (if supplied). Returns true on success. A weak version of this function is provided in jshardware_common.c */
-bool jshSPISendMany(IOEventFlags device, unsigned char *tx, unsigned char *rx, size_t count, void (*callback)());
+bool jshSPISendMany(IOEventFlags device, unsigned char *tx, unsigned char *rx, size_t count, void (*callback)(void));
 /** Set whether to send 16 bits or 8 over SPI */
 void jshSPISet16(IOEventFlags device, bool is16);
 /** Set whether to use the receive interrupt or not */
@@ -362,7 +362,7 @@ bool jshFlashGetPage(uint32_t addr, uint32_t *startAddr, uint32_t *pageSize);
 /** Return a JsVar array containing objects of the form `{addr, length}` for each contiguous block of free
  * memory available. These should be one complete pages, so that erasing the page containing any address in
  * this block won't erase anything useful! */
-JsVar *jshFlashGetFree();
+JsVar *jshFlashGetFree(void);
 /// Erase the flash page containing the address
 void jshFlashErasePage(uint32_t addr);
 /// Erase the flash pages containing the address - return true on success
@@ -399,13 +399,13 @@ void jshUtilTimerStart(JsSysTime period);
 /// Reschedule the timer (it should already be running) to interrupt after 'period'
 void jshUtilTimerReschedule(JsSysTime period);
 /// Stop the timer
-void jshUtilTimerDisable();
+void jshUtilTimerDisable(void);
 
 // ---------------------------------------------- LOW LEVEL
 
 #ifdef ARM
 // On SYSTick interrupt, call this
-void jshDoSysTick();
+void jshDoSysTick(void);
 #endif // ARM
 
 #if defined(STM32) || defined(STM32_LL)
@@ -424,28 +424,28 @@ void jshSetupRTCPrescalerValue(unsigned int prescale);
 /// Get the current prescaler value, or the calculated correct value if calibrate=true
 int jshGetRTCPrescalerValue(bool calibrate);
 // Reset timers and average systick duration counters for RTC - when coming out of sleep or changing prescaler
-void jshResetRTCTimer();
+void jshResetRTCTimer(void);
 /// Flags that we've been able to send data down USB, so it's ok to have data in the output buffer
-void jshClearUSBIdleTimeout();
+void jshClearUSBIdleTimeout(void);
 #endif
 
 #if defined(NRF51_SERIES) || defined(NRF52_SERIES)
 /// Called when we have had an event that means we should execute JS
-extern void jshHadEvent();
+extern void jshHadEvent(void);
 #else
-#define jshHadEvent() /* We should ensure we exit idle mode */
+#define jshHadEvent(void) /* We should ensure we exit idle mode */
 #endif
 
 /// the temperature from the internal temperature sensor, in degrees C
-JsVarFloat jshReadTemperature();
+JsVarFloat jshReadTemperature(void);
 
 /// The voltage that a reading of 1 from `analogRead` actually represents, in volts
-JsVarFloat jshReadVRef();
+JsVarFloat jshReadVRef(void);
 
 /** Get a random number - either using special purpose hardware or by
  * reading noise from an analog input. If unimplemented, this should
  * default to `rand()` */
-unsigned int jshGetRandomNumber();
+unsigned int jshGetRandomNumber(void);
 
 /** Change the processor clock info. What's in options is platform
  * specific - you should update the docs for jswrap_espruino_setClock
@@ -457,11 +457,11 @@ unsigned int jshSetSystemClock(JsVar *options);
 void jsvGetProcessorPowerUsage(JsVar *devices);
 
 /// Perform a proper hard-reboot of the device
-void jshReboot();
+void jshReboot(void);
 
 #if JSH_PORTV_COUNT>0
 /// handler for virtual ports (eg. pins on an IO Expander). This should be defined for each type of board used
-void jshVirtualPinInitialise();
+void jshVirtualPinInitialise(void);
 /// handler for virtual ports (eg. pins on an IO Expander). This should be defined for each type of board used
 void jshVirtualPinSetValue(Pin pin, bool state);
 /// handler for virtual ports (eg. pins on an IO Expander). This should be defined for each type of board used

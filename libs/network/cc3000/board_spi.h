@@ -45,7 +45,7 @@ long cc3000_read_irq_pin(void);
 void cc3000_irq_enable(void);
 void cc3000_irq_disable(void);
 
-void cc3000_check_irq_pin();
+void cc3000_check_irq_pin(void);
 
 #include "jsvar.h"
 

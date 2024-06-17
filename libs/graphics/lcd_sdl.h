@@ -15,5 +15,5 @@
 
 
 void lcdInit_SDL(JsGraphics *gfx);
-void lcdIdle_SDL();
+void lcdIdle_SDL(void);
 void lcdSetCallbacks_SDL(JsGraphics *gfx);

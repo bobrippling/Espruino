@@ -24,5 +24,5 @@ void jswrap_ESP32_ping(
     JsVar *pingCallback //!< Optional callback function.
 );
 
-void esp32_wifi_init();
-void jswrap_esp32_wifi_soft_init();
+void esp32_wifi_init(void);
+void jswrap_esp32_wifi_soft_init(void);

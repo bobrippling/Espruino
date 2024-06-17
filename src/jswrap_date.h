@@ -43,7 +43,7 @@ JsVarFloat fromTimeInDay(TimeInDay *td);
 CalendarDate getCalendarDate(int d);
 int fromCalendarDate(CalendarDate *date);
 
-JsVarFloat jswrap_date_now();
+JsVarFloat jswrap_date_now(void);
 JsVar *jswrap_date_from_milliseconds(JsVarFloat time);
 JsVar *jswrap_date_constructor(JsVar *args);
 

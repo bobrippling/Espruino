@@ -14,9 +14,9 @@
 #include "jspin.h"
 
 int jswrap_badge_capSense(int corner);
-int jswrap_badge_getBatteryPercentage();
+int jswrap_badge_getBatteryPercentage(void);
 void jswrap_badge_setContrast(JsVarFloat c);
 
-void jswrap_badge_init();
-void jswrap_badge_kill();
-bool jswrap_badge_idle();
+void jswrap_badge_init(void);
+void jswrap_badge_kill(void);
+bool jswrap_badge_idle(void);

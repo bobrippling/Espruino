@@ -289,17 +289,17 @@ void jsvSetMaxVarsUsed(unsigned int size);
 // Init/kill vars as a whole. If JSVAR_MALLOC is defined, a size can be specified (or 0 uses the old size). Calls jsvReset
 void jsvInit(unsigned int size);
 // wipe all JsVars, reset the free list
-void jsvReset();
+void jsvReset(void);
 // de-init, un-allocates JsVars if they were allocated previously
-void jsvKill();
-void jsvSoftInit(); ///< called when loading from flash - reinstates empty list
-void jsvSoftKill(); ///< called when saving to flash - clears empty list to ensure code compacts better
-JsVar *jsvFindOrCreateRoot(); ///< Find or create the ROOT variable item - used mainly if recovering from a saved state.
-unsigned int jsvGetMemoryUsage(); ///< Get number of memory records (JsVars) used
-unsigned int jsvGetMemoryTotal(); ///< Get total amount of memory records
-bool jsvIsMemoryFull(); ///< Get whether memory is full or not
+void jsvKill(void);
+void jsvSoftInit(void); ///< called when loading from flash - reinstates empty list
+void jsvSoftKill(void); ///< called when saving to flash - clears empty list to ensure code compacts better
+JsVar *jsvFindOrCreateRoot(void); ///< Find or create the ROOT variable item - used mainly if recovering from a saved state.
+unsigned int jsvGetMemoryUsage(void); ///< Get number of memory records (JsVars) used
+unsigned int jsvGetMemoryTotal(void); ///< Get total amount of memory records
+bool jsvIsMemoryFull(void); ///< Get whether memory is full or not
 bool jsvMoreFreeVariablesThan(unsigned int vars); ///< Return whether there are more free variables than the parameter (faster than checking no of vars used)
-void jsvShowAllocated(); ///< Show what is still allocated, for debugging memory problems
+void jsvShowAllocated(void); ///< Show what is still allocated, for debugging memory problems
 /// Try and allocate more memory - only works if RESIZABLE_JSVARS is defined
 void jsvSetMemoryTotal(unsigned int jsNewVarCount);
 /// Scan memory to find any JsVar that references a specific memory range, and if so update what it points to to p[oint to the new address
@@ -312,12 +312,12 @@ JsVar *jsvNewFlatStringOfLength(unsigned int byteLength); ///< Try and create a 
 JsVar *jsvNewFromString(const char *str); ///< Create a new string
 JsVar *jsvNewNameFromString(const char *str); ///< Create a new name from a string
 JsVar *jsvNewStringOfLength(unsigned int byteLength, const char *initialData); ///< Create a new string of the given length - full of 0s (or initialData if specified)
-static ALWAYS_INLINE JsVar *jsvNewFromEmptyString() { return jsvNewWithFlags(JSV_STRING_0); } ;///< Create a new empty string
+static ALWAYS_INLINE JsVar *jsvNewFromEmptyString(void) { return jsvNewWithFlags(JSV_STRING_0); } ;///< Create a new empty string
 #ifdef ESPR_UNICODE_SUPPORT
 JsVar *jsvNewUTF8String(JsVar* dataString); ///< Create a new unicode string using the given data string for backing
 JsVar *jsvNewUTF8StringAndUnLock(JsVar* dataString); ///< Create a new unicode string using the given data string for backing
 #endif
-static ALWAYS_INLINE JsVar *jsvNewNull() { return jsvNewWithFlags(JSV_NULL); } ;///< Create a new null variable
+static ALWAYS_INLINE JsVar *jsvNewNull(void) { return jsvNewWithFlags(JSV_NULL); } ;///< Create a new null variable
 /** Create a new String from a substring in RAM. It is always writable. jsvNewFromStringVar can reference a non-writable string.
 The Argument must be a string. stridx = start char or str, maxLength = max number of characters (can be JSVAPPENDSTRINGVAR_MAXLENGTH) */
 JsVar *jsvNewWritableStringFromStringVar(const JsVar *str, size_t stridx, size_t maxLength);
@@ -331,8 +331,8 @@ JsVar *jsvNewFromBool(bool value);
 JsVar *jsvNewFromFloat(JsVarFloat value);
 /// Create an integer (or float) from this value, depending on whether it'll fit in 32 bits or not.
 JsVar *jsvNewFromLongInteger(long long value);
-JsVar *jsvNewObject(); ///< Create a new object
-JsVar *jsvNewEmptyArray(); ///< Create a new array
+JsVar *jsvNewObject(void); ///< Create a new object
+JsVar *jsvNewEmptyArray(void); ///< Create a new array
 JsVar *jsvNewArray(JsVar **elements, int elementCount); ///< Create an array containing the given elements
 JsVar *jsvNewArrayFromBytes(uint8_t *elements, int elementCount); ///< Create an array containing the given bytes
 JsVar *jsvNewNativeFunction(void (*ptr)(void), unsigned short argTypes); ///< Create an array containing the given elements
@@ -755,15 +755,15 @@ static ALWAYS_INLINE bool jsvArrayIsEmpty(JsVar *arr) { assert(jsvIsArray(arr));
 void jsvTrace(JsVar *var, int indent);
 
 /** Run a garbage collection sweep - return nonzero if things have been freed */
-int jsvGarbageCollect();
+int jsvGarbageCollect(void);
 
 /** Defragement memory - this could take a while with interrupts turned off! */
-void jsvDefragment();
+void jsvDefragment(void);
 
 // Dump any locked variables that aren't referenced from `global` - for debugging memory leaks
-void jsvDumpLockedVars();
+void jsvDumpLockedVars(void);
 // Dump the free list - in order
-void jsvDumpFreeList();
+void jsvDumpFreeList(void);
 
 /** Remove whitespace to the right of a string - on MULTIPLE LINES */
 JsVar *jsvStringTrimRight(JsVar *srcString);

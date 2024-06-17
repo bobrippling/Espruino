@@ -18,7 +18,7 @@
 
 #include "jsvar.h"
 
-JsVar *jswrap_process_env();
+JsVar *jswrap_process_env(void);
 JsVar *jswrap_process_memory(JsVar *gc);
 
 #endif // JSWRAP_PROCESS_H_

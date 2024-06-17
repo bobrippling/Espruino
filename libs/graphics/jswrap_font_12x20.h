@@ -14,4 +14,4 @@
 
 #include "jsvar.h"
 
-JsVar *jswrap_graphics_setFont12x20();
+JsVar *jswrap_graphics_setFont12x20(void);

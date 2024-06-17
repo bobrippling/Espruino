@@ -223,7 +223,7 @@ bool jshGetPinShouldStayWatched(Pin pin);
 void jshSetPinShouldStayWatched(Pin pin, bool manual);
 
 // Reset our list of which pins are set manually - called from jshResetDevices
-void jshResetPinStateIsManual();
+void jshResetPinStateIsManual(void);
 
 bool jshPinInput(Pin pin);
 void jshPinOutput(Pin pin, bool value);

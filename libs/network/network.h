@@ -96,13 +96,13 @@ typedef struct {
 // ---------------------------------- these are in network.c
 // Get the relevant info for JsNetwork (done from a var in root scope)
 void networkCreate(JsNetwork *net, JsNetworkType type); // create the network object (ONLY to be used by network drivers)
-bool networkWasCreated();
+bool networkWasCreated(void);
 bool networkGetFromVar(JsNetwork *net);
 bool networkGetFromVarIfOnline(JsNetwork *net); // only return true (and network) if we're online, otherwise warn
 void networkSet(JsNetwork *net);
 void networkFree(JsNetwork *net);
 
-JsNetwork *networkGetCurrent(); ///< Get the currently active network structure. can be 0!
+JsNetwork *networkGetCurrent(void); ///< Get the currently active network structure. can be 0!
 // ---------------------------------------------------------
 
 /// Use this for getting the hostname, as it parses the name to see if it is an IP address first

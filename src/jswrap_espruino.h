@@ -19,7 +19,7 @@
 #include "jshardware.h"
 #include "jsflags.h" // for E.get/setFlags
 
-JsVarFloat jswrap_espruino_getTemperature();
+JsVarFloat jswrap_espruino_getTemperature(void);
 JsVar *jswrap_espruino_nativeCall(JsVarInt addr, JsVar *signature, JsVar *data);
 
 JsVarFloat jswrap_espruino_clip(JsVarFloat x, JsVarFloat min, JsVarFloat max);
@@ -29,10 +29,10 @@ JsVarFloat jswrap_espruino_convolve(JsVar *a, JsVar *b, int offset);
 void jswrap_espruino_FFT(JsVar *arrReal, JsVar *arrImag, bool inverse);
 
 void jswrap_espruino_enableWatchdog(JsVarFloat time, JsVar *isAuto);
-void jswrap_espruino_kickWatchdog();
+void jswrap_espruino_kickWatchdog(void);
 /// Return an array of errors based on the current flags
 JsVar *jswrap_espruino_getErrorFlagArray(JsErrorFlags flags);
-JsVar *jswrap_espruino_getErrorFlags();
+JsVar *jswrap_espruino_getErrorFlags(void);
 JsVar *jswrap_espruino_toArrayBuffer(JsVar *str);
 JsVar *jswrap_espruino_toUint8Array(JsVar *args);
 JsVar *jswrap_espruino_toString(JsVar *args);
@@ -45,23 +45,23 @@ JsVar *jswrap_espruino_memoryArea(int addr, int len);
 void jswrap_espruino_setBootCode(JsVar *code, bool alwaysExec);
 int jswrap_espruino_setClock(JsVar *options);
 void jswrap_espruino_setConsole(JsVar *device, JsVar *options);
-JsVar *jswrap_espruino_getConsole();
+JsVar *jswrap_espruino_getConsole(void);
 
 int jswrap_espruino_reverseByte(int v);
-void jswrap_espruino_dumpTimers();
-void jswrap_espruino_dumpLockedVars();
-void jswrap_espruino_dumpFreeList();
-void jswrap_e_dumpFragmentation();
-void jswrap_e_dumpVariables();
+void jswrap_espruino_dumpTimers(void);
+void jswrap_espruino_dumpLockedVars(void);
+void jswrap_espruino_dumpFreeList(void);
+void jswrap_e_dumpFragmentation(void);
+void jswrap_e_dumpVariables(void);
 JsVar *jswrap_espruino_getSizeOf(JsVar *v, int depth);
 JsVarInt jswrap_espruino_getAddressOf(JsVar *v, bool flatAddress);
 void jswrap_espruino_mapInPlace(JsVar *from, JsVar *to, JsVar *map, JsVarInt bits);
 JsVar *jswrap_espruino_lookupNoCase(JsVar *haystack, JsVar *needle, bool returnKey);
-JsVar *jswrap_e_dumpStr();
+JsVar *jswrap_e_dumpStr(void);
 JsVar *jswrap_espruino_CRC32(JsVar *data);
 JsVar *jswrap_espruino_HSBtoRGB(JsVarFloat hue, JsVarFloat sat, JsVarFloat bri, int format);
 void jswrap_espruino_setPassword(JsVar *pwd);
-void jswrap_espruino_lockConsole();
+void jswrap_espruino_lockConsole(void);
 void jswrap_espruino_setTimeZone(JsVarFloat zone);
 #ifndef ESPR_NO_DAYLIGHT_SAVING
 void jswrap_espruino_setDST(JsVar *params);
@@ -69,16 +69,16 @@ void jswrap_espruino_setDST(JsVar *params);
 JsVar *jswrap_espruino_memoryMap(JsVar *baseAddress, JsVar *registers);
 void jswrap_espruino_asm(JsVar *callspec, JsVar *args);
 void jswrap_espruino_compiledC(JsVar *code);
-void jswrap_espruino_reboot();
+void jswrap_espruino_reboot(void);
 
 void jswrap_espruino_setUSBHID(JsVar *arr);
 bool jswrap_espruino_sendUSBHID(JsVar *arr);
 
-JsVarInt jswrap_espruino_getBattery();
+JsVarInt jswrap_espruino_getBattery(void);
 void jswrap_espruino_setRTCPrescaler(int prescale);
 int jswrap_espruino_getRTCPrescaler(bool calibrate);
-JsVar *jswrap_espruino_getPowerUsage();
+JsVar *jswrap_espruino_getPowerUsage(void);
 JsVar *jswrap_espruino_decodeUTF8(JsVar *str, JsVar *lookup, JsVar *replaceFn);
-void jswrap_espruino_stopEventPropagation();
+void jswrap_espruino_stopEventPropagation(void);
 
 #endif // JSWRAP_ESPRUINO_H_

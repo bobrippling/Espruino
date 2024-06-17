@@ -138,16 +138,16 @@ const char *jswGetBasicObjectName(JsVar *var);
 const char *jswGetBasicObjectPrototypeName(const char *name);
 
 /** Tasks to run on Idle. Returns true if either one of the tasks returned true (eg. they're doing something and want to avoid sleeping) */
-bool jswIdle();
+bool jswIdle(void);
 
 /** Tasks to run on Hardware Initialisation (called once at boot time, after jshInit, before jsvInit/etc) */
-void jswHWInit();
+void jswHWInit(void);
 
 /** Tasks to run on Initialisation */
-void jswInit();
+void jswInit(void);
 
 /** Tasks to run on Deinitialisation */
-void jswKill();
+void jswKill(void);
 
 /** When called with an Object, fields are added for each device that is used with estimated power usage in uA */
 void jswGetPowerUsage(JsVar *devices);
@@ -171,7 +171,7 @@ void *jswGetBuiltInLibrary(const char *name);
 const char *jswGetBuiltInJSLibrary(const char *name);
 
 /** Return a comma-separated list of built-in libraries */
-const char *jswGetBuiltInLibraryNames();
+const char *jswGetBuiltInLibraryNames(void);
 
 #ifdef USE_CALLFUNCTION_HACK
 // on Emscripten and i386 we cant easily hack around function calls with floats/etc, plus we have enough

@@ -13,6 +13,6 @@
  */
 #include "jspin.h"
 
-void jswrap_thingy_init();
-void jswrap_thingy_kill();
+void jswrap_thingy_init(void);
+void jswrap_thingy_kill(void);
 

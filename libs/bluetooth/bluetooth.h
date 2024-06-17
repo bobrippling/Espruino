@@ -232,9 +232,9 @@ typedef struct {
 } BLEAdvReportData;
 
 /** Initialise the BLE stack */
-void jsble_init();
+void jsble_init(void);
 /** Completely deinitialise the BLE stack. Return true on success */
-bool jsble_kill();
+bool jsble_kill(void);
 
 /// Checks for error and reports an exception string if there was one, else 0 if no error
 JsVar *jsble_get_error_string(uint32_t err_code);
@@ -247,26 +247,26 @@ int jsble_exec_pending(IOEvent *event);
  * called when the softdevice is uninitialised. */
 void jsble_restart_softdevice(JsVar *jsFunction);
 
-uint32_t jsble_advertising_start();
+uint32_t jsble_advertising_start(void);
 uint32_t jsble_advertising_update_advdata(char *dPtr, unsigned int dLen);
 uint32_t jsble_advertising_update_scanresponse(char *dPtr, unsigned int dLen);
-void jsble_advertising_stop();
+void jsble_advertising_stop(void);
 
 /** Is BLE connected to any device at all? */
-bool jsble_has_connection();
+bool jsble_has_connection(void);
 
 /** Is BLE connected to a central device at all? */
-bool jsble_has_central_connection();
+bool jsble_has_central_connection(void);
 
 /** Return the index of the central connection in m_central_conn_handles, or -1 */
 int jsble_get_central_connection_idx(uint16_t handle);
 
 /** Is BLE connected to a server device at all (eg, the simple, 'slave' mode)? */
-bool jsble_has_peripheral_connection();
+bool jsble_has_peripheral_connection(void);
 
 /** Call this when something happens on BLE with this as
  * a peripheral - used with Dynamic Interval Adjustment  */
-void jsble_peripheral_activity();
+void jsble_peripheral_activity(void);
 
 #ifndef SAVE_ON_FLASH_EXTREME
 #define jsble_check_error(X) jsble_check_error_line(X, __LINE__)
@@ -301,7 +301,7 @@ void jsble_startBonding(bool forceRePair);
 void jsble_send_hid_input_report(uint8_t *data, int length);
 
 /// Update the current security settings from the info in hiddenRoot.BLE_NAME_SECURITY
-void jsble_update_security();
+void jsble_update_security(void);
 
 /// Return an object showing the security status of the given connection
 JsVar *jsble_get_security_status(uint16_t conn_handle);
@@ -354,7 +354,7 @@ IC = URI Identifier Code
 #define NDEF_TERM_TLV             0xfe /* last TLV block / byte */
 #define NDEF_TERM_TLV_LEN         0x01
 #define NDEF_TAG2_VALUE_MAXLEN (992 - 4 - NDEF_TERM_TLV_LEN) /* max NDEF data size for 0x7C size in cap. container (*8=992)*/
-void jsble_nfc_stop();
+void jsble_nfc_stop(void);
 void jsble_nfc_start(const uint8_t *data, size_t len);
 void jsble_nfc_get_internal(uint8_t *data, size_t *max_len);
 void jsble_nfc_send(const uint8_t *data, size_t len);
@@ -395,11 +395,11 @@ uint32_t jsble_central_send_passkey(uint16_t central_conn_handle, char *passkey)
 /// Set whether or not the whitelist is enabled
 void jsble_central_setWhitelist(bool whitelist);
 /// Erase any saved bonding info for peers
-void jsble_central_eraseBonds();
+void jsble_central_eraseBonds(void);
 /// Try to resolve a bonded peer's address from a random private resolvable address
 JsVar *jsble_resolveAddress(JsVar *address);
 #ifdef ESPR_BLE_PRIVATE_ADDRESS_SUPPORT
-JsVar *jsble_getPrivacy();
+JsVar *jsble_getPrivacy(void);
 void jsble_setPrivacy(JsVar *options);
 #endif // ESPR_BLE_PRIVATE_ADDRESS_SUPPORT
 #endif

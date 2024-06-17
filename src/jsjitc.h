@@ -101,19 +101,19 @@ typedef enum {
 } JsjsEmitOptions;
 
 // Called before start of JIT output
-void jsjcStart();
+void jsjcStart(void);
 // Called when JIT output stops
-JsVar *jsjcStop();
+JsVar *jsjcStop(void);
 // Called before start of a block of code. Returns the old code jsVar that should be passed into jsjcStopBlock. Ignored unless in JSJP_EMIT phase
-JsVar *jsjcStartBlock();
+JsVar *jsjcStartBlock(void);
 // Called to start writing to 'init code' (which is inserted before everything else). Returns the old code jsVar that should be passed into jsjcStopBlock
-JsVar *jsjcStartInitCodeBlock();
+JsVar *jsjcStartInitCodeBlock(void);
 // Called when JIT output stops, pass it the return value from jsjcStartBlock. Returns the code parsed in the block. Ignored unless in JSJP_EMIT phase
 JsVar *jsjcStopBlock(JsVar *oldBlock);
 // Emit a whole block of code
 void jsjcEmitBlock(JsVar *block);
 // Get what byte we're at in our code
-int jsjcGetByteCount();
+int jsjcGetByteCount(void);
 
 // Add 8 bit literal
 void jsjcLiteral8(int reg, uint8_t data);
@@ -155,7 +155,7 @@ void jsjcConvertToJsVar(int reg, JsjValueType varType);
 // Push a register onto the stack
 void jsjcPush(int reg, JsjValueType type);
 // Get the type of the variable on the top of the stack
-JsjValueType jsjcGetTopType();
+JsjValueType jsjcGetTopType(void);
 // Pop off the stack to a register
 JsjValueType jsjcPop(int reg);
 // Add a value to the stack pointer (only multiple of 4)
@@ -167,8 +167,8 @@ void jsjcLoadImm(int reg, int regAddr, int offset);
 // mem[regAddr + offset] = reg
 void jsjcStoreImm(int reg, int regAddr, int offset);
 
-void jsjcPushAll();
-void jsjcPopAllAndReturn();
+void jsjcPushAll(void);
+void jsjcPopAllAndReturn(void);
 
 #endif /* JSJITC_H_ */
 #endif /* ESPR_JIT */

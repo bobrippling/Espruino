@@ -13,7 +13,7 @@
  */
 
 /// Initialise step counting
-void stepcount_init();
+void stepcount_init(void);
 
 /* Registers a new data point for step counting. Data is expected
  * as 12.5Hz, 8192=1g, and accMagSquared = x*x + y*y + z*z

@@ -30,7 +30,7 @@ bool jsserialEventCallbackInit(JsVar *parent, JshUSARTInfo *inf);
 /// Stop watching serial RX pin
 void jsserialEventCallbackKill(JsVar *parent, JshUSARTInfo *inf);
 /// Called on idle - checks for software serial characters that need to be dispatched
-bool jsserialEventCallbackIdle();
+bool jsserialEventCallbackIdle(void);
 
 // This is used with jshSetEventCallback to allow Serial data to be received in software
 void jsserialEventCallback(bool state, IOEventFlags flags);

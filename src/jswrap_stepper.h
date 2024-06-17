@@ -16,8 +16,8 @@
 
 #include "jshardware.h"
 
-bool jswrap_stepper_idle();
-void jswrap_stepper_kill();
+bool jswrap_stepper_idle(void);
+void jswrap_stepper_kill(void);
 JsVar *jswrap_stepper_constructor(JsVar *options);
 JsVar *jswrap_stepper_moveTo(JsVar *stepper, int position, JsVar *options);
 void jswrap_stepper_stop(JsVar *stepper, JsVar *options);

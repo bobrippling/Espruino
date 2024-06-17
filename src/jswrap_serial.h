@@ -16,11 +16,11 @@
 
 #include "jsvar.h"
 
-JsVar *jswrap_serial_constructor();
+JsVar *jswrap_serial_constructor(void);
 void jswrap_serial_setConsole(JsVar *parent, bool force);
 void jswrap_serial_setup(JsVar *parent, JsVar *baud, JsVar *options);
 void jswrap_serial_unsetup(JsVar *parent);
-bool jswrap_serial_idle();
+bool jswrap_serial_idle(void);
 void jswrap_serial_print(JsVar *parent, JsVar *str);
 void jswrap_serial_println(JsVar *parent, JsVar *str);
 void jswrap_serial_write(JsVar *parent, JsVar *data);

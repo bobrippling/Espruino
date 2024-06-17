@@ -18,6 +18,6 @@
 /// Handle data sent to the VT100 terminal
 void terminalSendChar(char c);
 /// Initialise the terminal
-void jswrap_terminal_init();
+void jswrap_terminal_init(void);
 /// If needed, queue flip for graphics object
-bool jswrap_terminal_idle();
+bool jswrap_terminal_idle(void);

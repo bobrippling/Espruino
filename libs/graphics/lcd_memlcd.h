@@ -20,7 +20,7 @@ void lcdMemLCD_flip(JsGraphics *gfx); // run this to flip the offscreen buffer t
 void lcdMemLCD_cmd(int cmd, int dataLen, const char *data); // to send specific commands to the display
 
 /// pulse EXTCOMIN to avoid burn-in
-void lcdMemLCD_extcominToggle();
+void lcdMemLCD_extcominToggle(void);
 /// If backlight is on, we need to raise EXTCOMIN freq (use HW PWM)
 void lcdMemLCD_extcominBacklight(bool isOn);
 // Enable overlay mode (to overlay an image on top of the LCD contents)

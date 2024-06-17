@@ -110,16 +110,16 @@ typedef struct UtilTimerTask {
   UtilTimerEventType type; // the type of this task - do we set pin(s) or read/write data
 } PACKED_FLAGS UtilTimerTask;
 
-void jstUtilTimerInterruptHandler();
+void jstUtilTimerInterruptHandler(void);
 
 /// Wait until the utility timer is totally empty (use with care as timers can repeat)
-void jstUtilTimerWaitEmpty();
+void jstUtilTimerWaitEmpty(void);
 
 /// Return true if the utility timer is running
-bool jstUtilTimerIsRunning();
+bool jstUtilTimerIsRunning(void);
 
 /// Get the current timer offset - supply this when adding >1 timer task to ensure they are all executed at the same time relative to each other
-uint32_t jstGetUtilTimerOffset();
+uint32_t jstGetUtilTimerOffset(void);
 
 /// Return true if a timer task for the given pin exists (and set 'task' to it)
 bool jstGetLastPinTimerTask(Pin pin, UtilTimerTask *task);
@@ -149,7 +149,7 @@ bool jstSetWakeUp(JsSysTime period);
 /** If the first timer task is a wakeup task, remove it. This stops
  * us filling the timer full of wakeup events if we wake up from sleep
  * before the wakeup event */
-void jstClearWakeUp();
+void jstClearWakeUp(void);
 
 /// Start writing a string out at the given period between samples. 'time' is the time relative to the current time (0 = now)
 bool jstStartSignal(JsSysTime startTime, JsSysTime period, Pin pin, JsVar *currentData, JsVar *nextData, UtilTimerEventType type);
@@ -161,18 +161,18 @@ bool jstStopBufferTimerTask(JsVar *var);
 bool jstStopPinTimerTask(Pin pin);
 
 /// Stop ALL timer tasks (including digitalPulse - use this when resetting the VM)
-void jstReset();
+void jstReset(void);
 
 /** when system time is changed, also change the time in the timers.
 This should be done with interrupts off */
 void jstSystemTimeChanged(JsSysTime diff);
 
 /// Dump the current list of timers
-void jstDumpUtilityTimers();
+void jstDumpUtilityTimers(void);
 
 /* Restart the utility timer with the right period. This should not normally
 need to be called by anything outside jstimer.c */
-void  jstRestartUtilTimer();
+void  jstRestartUtilTimer(void);
 
 /** Queue a task up to be executed when a timer fires... return false on failure.
  * task.time is the delay at which to execute the task. If timerOffset!==NULL then

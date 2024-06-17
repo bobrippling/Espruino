@@ -611,7 +611,7 @@ int espruino_snprintf( char * s, size_t n, const char * fmt, ... );
 //#define RAND_MAX (0x7FFFFFFFU) // needs to be unsigned!
 
 /// a rand() replacement that doesn't need malloc (!!!)
-int rand();
+int rand(void);
 /// a rand() replacement that doesn't need malloc (!!!)
 void srand(unsigned int seed);
 
@@ -631,7 +631,7 @@ unsigned short int int_sqrt32(unsigned int x);
 void reverseBytes(char *data, int len);
 
 /** get the amount of free stack we have, in bytes */
-size_t jsuGetFreeStack();
+size_t jsuGetFreeStack(void);
 
 #ifdef ESP32
   void *espruino_stackHighPtr;  //Used by jsuGetFreeStack

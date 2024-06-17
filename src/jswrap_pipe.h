@@ -19,8 +19,8 @@
 #include "jsparse.h"
 #include "jsinteractive.h"
 
-bool jswrap_pipe_idle();
-void jswrap_pipe_kill();
+bool jswrap_pipe_idle(void);
+void jswrap_pipe_kill(void);
 
 void jswrap_pipe(JsVar* source, JsVar* dest, JsVar* options);
 

@@ -79,7 +79,7 @@ bool jsfWriteFile(JsfFileName name, JsVar *data, JsfFileFlags flags, JsVarInt of
 /// Erase the given file, return true on success
 bool jsfEraseFile(JsfFileName name);
 /// Erase the entire contents of the memory store
-bool jsfEraseAll();
+bool jsfEraseAll(void);
 /// Try and compact saved data so it'll fit in Flash again. Return true if some free space was created
 bool jsfCompact(bool showMessage);
 /** Return all files in flash as a JsVar array of names. If regex is supplied, it is used to filter the filenames using String.match(regexp)
@@ -93,7 +93,7 @@ JsVar *jsfListFiles(JsVar *regex, JsfFileFlags containing, JsfFileFlags notConta
  */
 uint32_t jsfHashFiles(JsVar *regex, JsfFileFlags containing, JsfFileFlags notContaining);
 /// Output debug info for files stored in flash storage
-void jsfDebugFiles();
+void jsfDebugFiles(void);
 
 typedef enum {
   JSFSTT_QUICK,    ///< Just files
@@ -112,7 +112,7 @@ typedef enum {
  */
 bool jsfIsStorageValid(JsfStorageTestType testFlags);
 /** Return true if there is nothing at all in Storage (first header on first page is all 0xFF) */
-bool jsfIsStorageEmpty();
+bool jsfIsStorageEmpty(void);
 
 /// Stats returned by jsfGetStorageStats
 typedef struct {
@@ -130,9 +130,9 @@ JsfStorageStats jsfGetStorageStats(uint32_t addr, bool allPages);
 
 // ------------------------------------------------------------------------ For loading/saving code to flash
 /// Save contents of JsVars into Flash.
-void jsfSaveToFlash();
+void jsfSaveToFlash(void);
 /// Load the RAM image from flash (this is the actual interpreter state)
-void jsfLoadStateFromFlash();
+void jsfLoadStateFromFlash(void);
 
 /// Save bootup code to flash - see jsfLoadBootCodeFromFlash
 void jsfSaveBootCodeToFlash(JsVar *code, bool runAfterReset);
@@ -143,17 +143,17 @@ bool jsfLoadBootCodeFromFlash(bool isReset);
  * Set isReset=false to always return the code  */
 JsVar *jsfGetBootCodeFromFlash(bool isReset);
 /// Returns true if flash contains something useful
-bool jsfFlashContainsCode();
+bool jsfFlashContainsCode(void);
 /** Completely clear any saved code from flash. */
-void jsfRemoveCodeFromFlash();
+void jsfRemoveCodeFromFlash(void);
 
 // Erase storage to 'factory' values.
-void jsfResetStorage();
+void jsfResetStorage(void);
 
 
 #ifdef ESPR_STORAGE_FILENAME_TABLE
 /// Create a lookup table for files - this speeds up file access
-void jsfCreateFileTable();
+void jsfCreateFileTable(void);
 #endif
 
 #endif //JSFLASH_H_

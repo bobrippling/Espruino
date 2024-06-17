@@ -178,8 +178,8 @@ extern JsLex *lex;
 JsLex *jslSetLex(JsLex *l);
 
 void jslInit(JsVar *var);
-void jslKill();
-void jslReset();
+void jslKill(void);
+void jslReset(void);
 void jslSeekTo(size_t seekToChar);
 void jslSeekToP(JslCharPos *seekToChar);
 
@@ -191,16 +191,16 @@ bool jslMatch(int expected_tk); ///< Match, and return true on success, false on
 void jslFunctionCharAsString(unsigned char ch, char *str, size_t len);
 void jslTokenAsString(int token, char *str, size_t len); ///< output the given token as a string - for debugging
 void jslGetTokenString(char *str, size_t len);
-char *jslGetTokenValueAsString();
-size_t jslGetTokenLength();
-JsVar *jslGetTokenValueAsVar();
-bool jslIsIDOrReservedWord();
+char *jslGetTokenValueAsString(void);
+size_t jslGetTokenLength(void);
+JsVar *jslGetTokenValueAsVar(void);
+bool jslIsIDOrReservedWord(void);
 
 // Only for more 'internal' use - skip over any whitespace
-void jslSkipWhiteSpace();
+void jslSkipWhiteSpace(void);
 
 // Only for more 'internal' use
-void jslGetNextToken(); ///< Get the text token from our text string
+void jslGetNextToken(void); ///< Get the text token from our text string
 
 /// Create a new STRING from part of the lexer
 JsVar *jslNewStringFromLexer(JslCharPos *charFrom, size_t charTo);
@@ -211,7 +211,7 @@ JsVar *jslNewTokenisedStringFromLexer(JslCharPos *charFrom, size_t charTo);
 #endif
 
 /// Return the line number at the current character position (this isn't fast as it searches the string)
-unsigned int jslGetLineNumber();
+unsigned int jslGetLineNumber(void);
 
 /// Do we need a space between these two characters when printing a function's text?
 bool jslNeedSpaceBetween(unsigned char lastch, unsigned char ch);

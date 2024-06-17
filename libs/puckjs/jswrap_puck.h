@@ -32,29 +32,29 @@ PuckVersion puckVersion;
 #define PUCKJS_HAS_ACCEL (puckVersion==PUCKJS_2V0 || puckVersion==PUCKJS_2V1)
 #define PUCKJS_HAS_TEMP_SENSOR (puckVersion==PUCKJS_2V0 || puckVersion==PUCKJS_2V1)
 
-JsVar *jswrap_puck_getHardwareVersion();
+JsVar *jswrap_puck_getHardwareVersion(void);
 
-void jswrap_puck_magOn();
-void jswrap_puck_magOff();
-JsVar *jswrap_puck_mag();
-JsVarFloat jswrap_puck_magTemp();
+void jswrap_puck_magOn(void);
+void jswrap_puck_magOff(void);
+JsVar *jswrap_puck_mag(void);
+JsVarFloat jswrap_puck_magTemp(void);
 void jswrap_puck_magWr(JsVarInt reg, JsVarInt data);
 int jswrap_puck_magRd(JsVarInt reg);
-JsVarFloat jswrap_puck_getTemperature();
+JsVarFloat jswrap_puck_getTemperature(void);
 
 void jswrap_puck_accelOn(JsVarFloat hz);
-void jswrap_puck_accelOff();
-JsVar *jswrap_puck_accel();
+void jswrap_puck_accelOff(void);
+JsVar *jswrap_puck_accel(void);
 void jswrap_puck_accelWr(JsVarInt reg, JsVarInt data);
 int jswrap_puck_accelRd(JsVarInt reg);
 
 void jswrap_puck_IR(JsVar *data, Pin cathode, Pin anode);
 int jswrap_puck_capSense(Pin tx, Pin rx);
-JsVarFloat jswrap_puck_light();
-JsVarInt jswrap_puck_getBattery();
-bool jswrap_puck_selfTest();
+JsVarFloat jswrap_puck_light(void);
+JsVarInt jswrap_puck_getBattery(void);
+bool jswrap_puck_selfTest(void);
 
-void jswrap_puck_init();
-void jswrap_puck_kill();
-bool jswrap_puck_idle();
+void jswrap_puck_init(void);
+void jswrap_puck_kill(void);
+bool jswrap_puck_idle(void);
 void jswrap_puck_powerusage(JsVar *devices);

@@ -57,13 +57,13 @@
 #define MB_LED_ROW3 (15)
 #endif
 
-void jswrap_microbit_init();
-void jswrap_microbit_kill();
+void jswrap_microbit_init(void);
+void jswrap_microbit_kill(void);
 void jswrap_microbit_show(JsVar *image);
 
-JsVar *jswrap_microbit_acceleration();
+JsVar *jswrap_microbit_acceleration(void);
 void jswrap_microbit_accelWr(int a, int d);
-void jswrap_microbit_accelOn();
-void jswrap_microbit_accelOff();
-JsVar *jswrap_microbit_compass();
+void jswrap_microbit_accelOn(void);
+void jswrap_microbit_accelOff(void);
+JsVar *jswrap_microbit_compass(void);
 

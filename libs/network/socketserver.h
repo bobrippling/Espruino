@@ -20,7 +20,7 @@
 #include "network.h"
 
 // -----------------------------
-void socketInit();
+void socketInit(void);
 void socketKill(JsNetwork *net);
 bool socketIdle(JsNetwork *net);
 

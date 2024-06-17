@@ -20,11 +20,11 @@
 
 /** Initialize any device-specific structures, like flow control states.
  * Called from jshInit */
-void jshInitDevices();
+void jshInitDevices(void);
 
 /** Reset any devices that could have been set up differently by JS code.
  * Called from jshReset */
-void jshResetDevices();
+void jshResetDevices(void);
 
 /** Flags used to describe events put in the txBuffer and ioBuffer queues.
  *
@@ -196,12 +196,12 @@ void jshPushIOCharEvents(IOEventFlags channel, char *data, unsigned int count);
 bool jshPopIOEvent(IOEvent *result); ///< returns true on success
 bool jshPopIOEventOfType(IOEventFlags eventType, IOEvent *result); ///< returns true on success
 /// Do we have any events pending? Will jshPopIOEvent return true?
-bool jshHasEvents();
+bool jshHasEvents(void);
 /// Check if the top event is for the given device
 bool jshIsTopEvent(IOEventFlags eventType);
 
 /// How many event blocks are left? compare this to IOBUFFERMASK
-int jshGetEventsUsed();
+int jshGetEventsUsed(void);
 
 /// Do we have enough space for N characters?
 bool jshHasEventSpaceForChars(int n);
@@ -219,7 +219,7 @@ void jshTransmit(IOEventFlags device, unsigned char data);
 // Queue a formatted string for transmission
 void jshTransmitPrintf(IOEventFlags device, const char *fmt, ...);
 /// Wait for transmit to finish
-void jshTransmitFlush();
+void jshTransmitFlush(void);
 /// Wait for all data in the transmit queue to be written for a specific device
 void jshTransmitFlushDevice(IOEventFlags device);
 /// Clear everything from a device
@@ -227,9 +227,9 @@ void jshTransmitClearDevice(IOEventFlags device);
 /// Move all output from one device to another
 void jshTransmitMove(IOEventFlags from, IOEventFlags to);
 /// Do we have anything we need to send?
-bool jshHasTransmitData();
+bool jshHasTransmitData(void);
 // Return the device at the top of the transmit queue (or EV_NONE)
-IOEventFlags jshGetDeviceToTransmit();
+IOEventFlags jshGetDeviceToTransmit(void);
 /// Try and get a character for transmission - could just return -1 if nothing
 int jshGetCharToTransmit(IOEventFlags device);
 
@@ -238,7 +238,7 @@ int jshGetCharToTransmit(IOEventFlags device);
 void jshSetFlowControlXON(IOEventFlags device, bool hostShouldTransmit);
 
 /// To be called on idle when the input queue has enough space
-void jshSetFlowControlAllReady();
+void jshSetFlowControlAllReady(void);
 
 /// Set whether to use flow control on the given device or not. Whether to use software, and if hardware, the pin to use for RTS
 void jshSetFlowControlEnabled(IOEventFlags device, bool software, unsigned char/*Pin*/ pinCTS);

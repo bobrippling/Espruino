@@ -13,16 +13,16 @@
  */
 #include "jspin.h"
 
-JsVar *jswrap_jolt_q0();
-JsVar *jswrap_jolt_q1();
-JsVar *jswrap_jolt_q2();
-JsVar *jswrap_jolt_q3();
+JsVar *jswrap_jolt_q0(void);
+JsVar *jswrap_jolt_q1(void);
+JsVar *jswrap_jolt_q2(void);
+JsVar *jswrap_jolt_q3(void);
 void jswrap_jolt_setDriverMode(int driver, JsVar *mode);
 
-bool jswrap_jolt_selfTest();
+bool jswrap_jolt_selfTest(void);
 
-void jswrap_jolt_hwinit();
-void jswrap_jolt_init();
-void jswrap_jolt_kill();
-bool jswrap_jolt_idle();
+void jswrap_jolt_hwinit(void);
+void jswrap_jolt_init(void);
+void jswrap_jolt_kill(void);
+bool jswrap_jolt_idle(void);
 void jswrap_jolt_powerusage(JsVar *devices);

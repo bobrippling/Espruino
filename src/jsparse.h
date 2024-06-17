@@ -17,12 +17,12 @@
 #include "jsvar.h"
 #include "jslex.h"
 
-void jspInit();
-void jspKill();
+void jspInit(void);
+void jspKill(void);
 
 // jspSoft* - 'release' or 'claim' anything we are using, but ensure that it doesn't get freed
-void jspSoftInit(); ///< used when recovering from or saving to flash
-void jspSoftKill(); ///< used when recovering from or saving to flash
+void jspSoftInit(void); ///< used when recovering from or saving to flash
+void jspSoftKill(void); ///< used when recovering from or saving to flash
 /** Returns true if the constructor function given is the same as that
  * of the object with the given name. */
 bool jspIsConstructor(JsVar *constructor, const char *constructorName);
@@ -32,7 +32,7 @@ JsVar *jspGetPrototype(JsVar *object);
 JsVar *jspGetConstructor(JsVar *object);
 
 /// Check that we have enough stack to recurse. Return true if all ok, error if not.
-bool jspCheckStackPosition();
+bool jspCheckStackPosition(void);
 
 /// Create a new built-in object that jswrapper can use to check for built-in functions
 JsVar *jspNewBuiltin(const char *name);
@@ -46,19 +46,19 @@ NO_INLINE JsVar *jspNewPrototype(const char *instanceOf, bool returnObject);
 JsVar *jspNewObject(const char *name, const char *instanceOf);
 
 /// if interrupting execution, this is set
-bool jspIsInterrupted();
+bool jspIsInterrupted(void);
 /// if interrupting execution, this is set
 void jspSetInterrupted(bool interrupt);
 /// Has there been an error during parsing
-bool jspHasError();
+bool jspHasError(void);
 /// Set the error flag - set lineReported if we've already output the line number
 void jspSetError(bool lineReported);
 /// We had an exception (argument is the exception's value)
 void jspSetException(JsVar *value);
 /** Return the reported exception if there was one (and clear it). May return undefined even if there was an exception - eg `throw undefined` */
-JsVar *jspGetException();
+JsVar *jspGetException(void);
 /** Return a stack trace string if there was one (and clear it) */
-JsVar *jspGetStackTrace();
+JsVar *jspGetStackTrace(void);
 
 /** Evaluate the given variable as an expression (in current scope) */
 JsVar *jspEvaluateExpressionVar(JsVar *str);
@@ -172,11 +172,11 @@ typedef enum {
   JSP_NOSKIP_H = 128,
 } JspSkipFlags;
 
-bool jspParseEmptyFunction();    ///< parse function with no arguments
+bool jspParseEmptyFunction(void);    ///< parse function with no arguments
 
 /** Parse using current lexer until we hit the end of
  * input or there was some problem. */
-JsVar *jspParse();
+JsVar *jspParse(void);
 
 /** Handle a function call (assumes we've parsed the function name and we're
  * on the start bracket). 'thisArg' is the value of the 'this' variable when the
@@ -208,6 +208,6 @@ JsVar *jspGetVarNamedField(JsVar *object, JsVar *nameVar, bool returnName);
 JsVar *jspeiFindInScopes(const char *name);
 
 /// Return the topmost scope (and lock it)
-JsVar *jspeiGetTopScope();
+JsVar *jspeiGetTopScope(void);
 
 #endif /* JSPARSE_H_ */

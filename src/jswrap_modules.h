@@ -18,9 +18,9 @@
 
 JsVar *jswrap_require(JsVar *modulename);
 
-JsVar *jswrap_modules_getCached();
+JsVar *jswrap_modules_getCached(void);
 void jswrap_modules_removeCached(JsVar *id);
-void jswrap_modules_removeAllCached();
+void jswrap_modules_removeAllCached(void);
 void jswrap_modules_addCached(JsVar *id, JsVar *sourceCode);
 
 #endif // JSWRAP_MODULES_H_

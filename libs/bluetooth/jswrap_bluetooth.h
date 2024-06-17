@@ -56,7 +56,7 @@ extern JsVar *bleTaskInfo2; // info related to the current task
 
 const char *bleGetTaskString(BleTask task);
 bool bleInTask(BleTask task);
-BleTask bleGetCurrentTask();
+BleTask bleGetCurrentTask(void);
 bool bleNewTask(BleTask task, JsVar *taskInfo);
 void bleCompleteTaskSuccess(BleTask task, JsVar *data);
 void bleCompleteTaskSuccessAndUnLock(BleTask task, JsVar *data);
@@ -77,29 +77,29 @@ uint16_t jswrap_ble_BluetoothRemoteGATTCharacteristic_getHandle(JsVar *parent);
 #endif
 
 // ------------------------------------------------------------------------------
-void jswrap_ble_init();
-bool jswrap_ble_idle();
-void jswrap_ble_kill();
+void jswrap_ble_init(void);
+bool jswrap_ble_idle(void);
+void jswrap_ble_kill(void);
 // Used to dump bluetooth initialisation info for 'dump'
 void jswrap_ble_dumpBluetoothInitialisation(vcbprintf_callback user_callback, void *user_data);
 /** Reconfigure the softdevice (on init or after restart) to have all the services/advertising we need */
-void jswrap_ble_reconfigure_softdevice();
+void jswrap_ble_reconfigure_softdevice(void);
 // ------------------------------------------------------------------------------
 
 
-void jswrap_ble_disconnect();
-void jswrap_ble_sleep();
-void jswrap_ble_wake();
+void jswrap_ble_disconnect(void);
+void jswrap_ble_sleep(void);
+void jswrap_ble_wake(void);
 void jswrap_ble_restart(JsVar *callback);
-void jswrap_ble_eraseBonds();
+void jswrap_ble_eraseBonds(void);
 JsVar *jswrap_ble_getAddress(bool current);
 void jswrap_ble_setAddress(JsVar *address);
 JsVar *jswrap_ble_resolveAddress(JsVar *address);
 
 /// Used by bluetooth.c internally when it needs to set up advertising at first
-JsVar *jswrap_ble_getCurrentAdvertisingData();
+JsVar *jswrap_ble_getCurrentAdvertisingData(void);
 
-JsVarFloat jswrap_ble_getBattery();
+JsVarFloat jswrap_ble_getBattery(void);
 void jswrap_ble_setAdvertising(JsVar *data, JsVar *options);
 JsVar *jswrap_ble_getAdvertisingData(JsVar *data, JsVar *options);
 void jswrap_ble_setScanResponse(JsVar *data);
@@ -117,23 +117,23 @@ void jswrap_nfc_pair(JsVar *key);
 void jswrap_nfc_androidApp(JsVar *appName);
 void jswrap_nfc_raw(JsVar *payload);
 JsVar *jswrap_nfc_start(JsVar *payload);
-void jswrap_nfc_stop();
+void jswrap_nfc_stop(void);
 void jswrap_nfc_send(JsVar *payload);
 
 // BLE_HIDS_ENABLED
 void jswrap_ble_sendHIDReport(JsVar *data, JsVar *callback);
 
 // if ESPR_BLUETOOTH_ANCS
-bool jswrap_ble_ancsIsActive();
+bool jswrap_ble_ancsIsActive(void);
 void jswrap_ble_ancsAction(int uid, bool isPositive);
 JsVar *jswrap_ble_ancsGetNotificationInfo(JsVarInt uid);
 JsVar *jswrap_ble_ancsGetAppInfo(JsVar *appId);
-bool jswrap_ble_amsIsActive();
+bool jswrap_ble_amsIsActive(void);
 JsVar *jswrap_ble_amsGetPlayerInfo(JsVar *id);
 JsVar *jswrap_ble_amsGetTrackInfo(JsVar *id);
 void jswrap_ble_amsCommand(JsVar *id);
-bool jswrap_ble_ctsIsActive();
-JsVar *jswrap_ble_ctsGetTime();
+bool jswrap_ble_ctsIsActive(void);
+JsVar *jswrap_ble_ctsGetTime(void);
 
 JsVar *jswrap_ble_requestDevice(JsVar *options);
 JsVar *jswrap_ble_connect(JsVar *mac, JsVar *options);

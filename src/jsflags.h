@@ -40,7 +40,7 @@ bool jsfGetFlag(JsFlags flag);
 /// Set the state of a flag
 void jsfSetFlag(JsFlags flag, bool isOn);
 /// Get a list of all flags and their status
-JsVar *jsfGetFlags();
+JsVar *jsfGetFlags(void);
 /// Set any of the specified flags
 void jsfSetFlags(JsVar *flags);
 

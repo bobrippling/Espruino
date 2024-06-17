@@ -26,7 +26,7 @@ void jswrap_interface_reset(bool clearFlash);
 void jswrap_interface_edit(JsVar *funcName);
 void jswrap_interface_echo(bool echoOn);
 void jswrap_interactive_setTime(JsVarFloat time);
-JsVar *jswrap_interface_getSerial();
+JsVar *jswrap_interface_getSerial(void);
 
 JsVar *jswrap_interface_setInterval(JsVar *func, JsVarFloat timeout, JsVar *args);
 JsVar *jswrap_interface_setTimeout(JsVar *func, JsVarFloat timeout, JsVar *args);

@@ -20,7 +20,7 @@
 #if ESPR_NO_PROMISES!=1
 
 /// Create a new promise
-JsVar *jspromise_create();
+JsVar *jspromise_create(void);
 /// Resolve the given promise
 void jspromise_resolve(JsVar *promise, JsVar *data);
 /// Reject the given promise

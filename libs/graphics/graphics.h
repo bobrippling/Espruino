@@ -163,7 +163,7 @@ extern JsGraphicsTheme graphicsTheme;
 /// Internal instance of Graphics structure (eg for built-in LCD) so we don't have to store all state in a var
 extern JsGraphics graphicsInternal;
 /// This is defined by whatever sets up graphicsInternal - it handles outputting to the screen (if that's needed)
-void graphicsInternalFlip();
+void graphicsInternalFlip(void);
 #endif
 
 
@@ -229,7 +229,7 @@ void graphicsScroll(JsGraphics *gfx, int xdir, int ydir);
 
 void graphicsSplash(JsGraphics *gfx); ///< splash screen
 
-void graphicsIdle(); ///< called when idling
+void graphicsIdle(void); ///< called when idling
 
 #define GRAPHICS_COL_16_TO_3(x) ((((x)&0x8000)?4:0)|(((x)&0x0400)?2:0)|(((x)&0x0010)?1:0))
 #define GRAPHICS_COL_3_TO_16(x) ((((x)&4)?0xF800:0)|(((x)&2)?0x07E0:0)|(((x)&1)?0x001F:0))
